@@ -27,9 +27,9 @@
 	"jsonwebtoken": "^5.4.1"
   },
   "scripts": {
+  "prestart" : "npm install",
     "debug": "node debug app.js",
-    "start": "node app.js",
-	"start": "npm start"
+    "start": "node app.js"
   },
   "main": "app.js",
   "repository": {
