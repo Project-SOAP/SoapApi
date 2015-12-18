@@ -31,9 +31,9 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // cookie: {
-  //   maxAge: 24 * 60 * 60 * 1000
-  // },
+  cookie: {
+     maxAge: 24 * 60 * 60 * 1000
+   },
 
   /***************************************************************************
   *                                                                          *
@@ -41,7 +41,7 @@ module.exports.session = {
   * session store that can be shared across multiple Sails.js servers        *
   ***************************************************************************/
 
-  // adapter: 'redis',
+  //adapter: 'redis',
 
   /***************************************************************************
   *                                                                          *
@@ -67,7 +67,8 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // adapter: 'mongo',
+  adapter: 'mongo',
+  url: 'mongodb://lambda-user:Passw0rd@ds033255.mongolab.com:33255/heroku_rx11tbmq'
   // host: 'localhost',
   // port: 27017,
   // db: 'sails',
