@@ -138,4 +138,10 @@ module.exports.sockets = {
   ***************************************************************************/
   // transports: ["polling", "websocket"]
 
+  adapter: 'redis',
+  host: 'jack.redistogo.com',
+  port: 9740,
+  db: 'redistogo',
+  pass: 'e49e339cca05b8c269946a293ac6c58c'
+
 };
