@@ -67,12 +67,12 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  //adapter: 'mongo',
-  //url: 'mongodb://lambda-user:Passw0rd@ds033255.mongolab.com:33255/heroku_rx11tbmq'
+  // adapter: 'mongo',
+  // url: 'mongodb://lambda-user:Passw0rd@ds033255.mongolab.com:33255/heroku_rx11tbmq',
   // host: 'localhost',
   // port: 27017,
   // db: 'sails',
-  // collection: 'sessions',
+  // collection: 'sessions'
 
   /***************************************************************************
   *                                                                          *
