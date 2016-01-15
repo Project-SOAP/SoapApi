@@ -8,7 +8,14 @@
 module.exports = {
 
   attributes: {
+      name:{
+        'type':'string',
+        'require': 'true'
+      },
 
+      immat: {
+        'type':'string'
+      }
   }
 };
 
