@@ -7,7 +7,7 @@
 
 module.exports = {
     // a CREATE action
-    create: function(req, res, next) {
+    /*create: function(req, res, next) {
         var params = req.params.all();
         User.create(params, function(err, user) {
 
@@ -101,6 +101,6 @@ module.exports = {
             if (!result) return res.notFound();
             return res.ok(result);
         });
-    }
+    }*/
 };
 
