@@ -1,7 +1,5 @@
-/**
- * Created by Hubert on 18/12/2015.
- */
 var jwt = require('jsonwebtoken');
+
 module.exports  = {
     generate: function(payload){
         var config  = sails.config
@@ -25,4 +23,4 @@ module.exports  = {
     decode: function(token){
         return jwt.decode(token)
     }
-}
+};
