@@ -72,7 +72,7 @@ module.exports = {
         })
     },
 
-    beforeUpdate: function (value, next) {
+    /*beforeUpdate: function (value, next) {
         if (value.password.length >= 20) {
             next()
         } else {
@@ -87,5 +87,5 @@ module.exports = {
                 })
             })
         }
-    }
+    }*/
 };
