@@ -9,6 +9,9 @@ module.exports = {
 
     attributes: {
 
+        society:{
+            type:'string'
+        },
         position: {
             model: 'Position'
         },

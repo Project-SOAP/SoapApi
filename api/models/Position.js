@@ -8,8 +8,8 @@
 module.exports = {
 
   attributes: {
-    latitude :{},
-    longitude : {}
+    latitude :"",
+    longitude : ""
   }
 };
 

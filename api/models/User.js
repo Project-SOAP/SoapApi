@@ -33,9 +33,6 @@ module.exports = {
           type: 'text'
       },
 
-      society : {
-          model: 'Society'
-      },
       admin : {
           model: 'Admin'
       },

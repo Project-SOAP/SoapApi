@@ -44,6 +44,8 @@ module.exports.routes = {
   'post /user': 'UserController.create',
   'put /user/:id': 'UserController.update',
   'delete /user/:id': 'UserController.destroy',
+  'get /driver/:num':'UserController.findDriver',
+  'get /technician/:num':'UserController.findTechies',
 
   /***************************************************************************
   *                                                                          *

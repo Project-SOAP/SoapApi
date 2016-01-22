@@ -13,7 +13,9 @@ module.exports = {
             collection: 'Breakdown',
             via: 'techies'
         },
-
+        society:{
+            type:'string'
+        },
         position: {
             model: 'Position'
         },

@@ -4,6 +4,11 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+var ObjectId = require('mongodb').ObjectID;
+var url = 'mongodb://localhost:27017/SoapDB';
+
 
 module.exports = {
     // a CREATE action
@@ -100,6 +105,30 @@ module.exports = {
 
             if (!result) return res.notFound();
             return res.ok(result);
+        });
+    },
+
+    findDrivers : function(db, callback, num) {
+        var cursor =db.collection('User').find( { "driver.society" : num }  );
+        cursor.each(function(err, doc) {
+            assert.equal(err, null);
+            if (doc != null) {
+                console.dir(doc);
+            } else {
+                callback();
+            }
+        });
+    },
+
+    findTechies : function(db, callback, num) {
+        var cursor =db.collection('User').find( { "techies.society" : num }  );
+        cursor.each(function(err, doc) {
+            assert.equal(err, null);
+            if (doc != null) {
+                console.dir(doc);
+            } else {
+                callback();
+            }
         });
     }
 };
