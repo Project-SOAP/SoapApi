@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': 'authenticated',
+  /*'*': 'authenticated',
   AuthController: {
     'loginA': [],
     'loginD': [],
@@ -43,7 +43,7 @@ module.exports.policies = {
   '*': 'authenticated',
   TechnicianController: {
     'create': []
-  }
+  }*/
 
   /***************************************************************************
   *                                                                          *
