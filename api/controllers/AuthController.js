@@ -6,15 +6,16 @@
  */
 
 module.exports = {
-    login: function(req,res){
+    loginA: function(req,res){
+
         var name = req.param('name');
         var password = req.param('password');
         if(!name || !password) return res.json(401,{err:'name and password are required'})
-        User.findOne({name:name}, function(err,user){
+        Admin.findOne({name:name}, function(err,user){
             if(err) console.log(err);
             if(err) return res.json(403, {err:'forbidden'});
             if(!user) return res.json(401,{err:'invalid name or password'});
-            User.comparePassword(password,user, function(err,valid){
+            Admin.comparePassword(password,user, function(err,valid){
                 if(err) console.log(err);
                 if(err) return res.json(403, {err:'forbidden'});
                 if(!valid)return res.json(401,{err:'invalid name or password'});
@@ -31,8 +32,64 @@ module.exports = {
                         }
                     )
                 })
-                //console.log('je suis valide')
+            })
+        })
+    },
+    loginD: function(req,res){
 
+        var name = req.param('name');
+        var password = req.param('password');
+        if(!name || !password) return res.json(401,{err:'name and password are required'})
+        Driver.findOne({name:name}, function(err,user){
+            if(err) console.log(err);
+            if(err) return res.json(403, {err:'forbidden'});
+            if(!user) return res.json(401,{err:'invalid name or password'});
+            Driver.comparePassword(password,user, function(err,valid){
+                if(err) console.log(err);
+                if(err) return res.json(403, {err:'forbidden'});
+                if(!valid)return res.json(401,{err:'invalid name or password'});
+                token = JwtHandler.generate({name:user.name,id: user.id});
+                user.token = token;
+                user.save(function(err){
+                    if(err) return res.json(403, {err:'forbidden'});
+                    return res.json(
+                        {
+                            id: user.id,
+                            name: user.name,
+                            email: user.email,
+                            token:token
+                        }
+                    )
+                })
+            })
+        })
+    },
+    loginT: function(req,res){
+
+        var name = req.param('name');
+        var password = req.param('password');
+        if(!name || !password) return res.json(401,{err:'name and password are required'})
+        Technician.findOne({name:name}, function(err,user){
+            if(err) console.log(err);
+            if(err) return res.json(403, {err:'forbidden'});
+            if(!user) return res.json(401,{err:'invalid name or password'});
+            Technician.comparePassword(password,user, function(err,valid){
+                if(err) console.log(err);
+                if(err) return res.json(403, {err:'forbidden'});
+                if(!valid)return res.json(401,{err:'invalid name or password'});
+                token = JwtHandler.generate({name:user.name,id: user.id});
+                user.token = token;
+                user.save(function(err){
+                    if(err) return res.json(403, {err:'forbidden'});
+                    return res.json(
+                        {
+                            id: user.id,
+                            name: user.name,
+                            email: user.email,
+                            token:token
+                        }
+                    )
+                })
             })
         })
     },

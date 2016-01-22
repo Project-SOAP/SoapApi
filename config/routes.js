@@ -36,16 +36,10 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'post /api/login': 'AuthController.login',
+  'post /api/login/Admin': 'AuthController.loginA',
   'get /api/refresh': 'AuthController.refresh',
 
-  //Création des routes restraintes pour user
-  'get /user/:id': 'UserController.find',
-  'post /user': 'UserController.create',
-  'put /user/:id': 'UserController.update',
-  'delete /user/:id': 'UserController.destroy',
-  'get /driver/:num':'UserController.findDrivers',
-  'get /technician/:num':'UserController.findTechies',
+
 
   /***************************************************************************
   *                                                                          *

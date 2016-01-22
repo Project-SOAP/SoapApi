@@ -28,10 +28,20 @@ module.exports.policies = {
 
   '*': 'authenticated',
   AuthController: {
-    'login': []
+    'loginA': [],
+    'loginD': [],
+    'loginT': []
   },
   '*': 'authenticated',
-  UserController: {
+  AdminController: {
+    'create': []
+  },
+  '*': 'authenticated',
+  DriverController: {
+    'create': []
+  },
+  '*': 'authenticated',
+  TechnicianController: {
     'create': []
   }
 
