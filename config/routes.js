@@ -37,6 +37,8 @@ module.exports.routes = {
   },
 
   'post /api/login/Admin': 'AuthController.loginA',
+  'post /api/login/Driver': 'AuthController.loginD',
+  'post /api/login/Technician': 'AuthController.loginT',
   'get /api/refresh': 'AuthController.refresh',
 
 
