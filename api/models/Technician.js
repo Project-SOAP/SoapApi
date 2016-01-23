@@ -7,7 +7,10 @@
 var bcrypt = require('bcryptjs')
 module.exports = {
 
+    connection: [ 'rabbitCluster', 'mongoLocal' ],
+    routingKey: [ 'stream', 'parentMessage' ],
     attributes: {
+
         name: {
             type: 'string',
             required: true,

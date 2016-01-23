@@ -7,7 +7,10 @@
 
 module.exports = {
 
+  connection: [ 'rabbitCluster', 'mongoLocal' ],
+  routingKey: [ 'stream', 'parentMessage' ],
   attributes: {
+
     latitude :"",
     longitude : ""
   }

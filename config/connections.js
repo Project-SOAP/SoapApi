@@ -65,16 +65,21 @@ module.exports.connections = {
     database: 'SoapDB'
   },
 
-  mongoHero: {
-    adapter: 'sails-mongo',
-    //host: 'ds033255.mongolab.com',
-    url: 'mongodb://lambda-user:Passw0rd@ds033255.mongolab.com:33255/heroku_rx11tbmq'
-    //port: 33255,
-    //user: 'lambda-user',
-    //password: 'Passw0rd',
-    //database: 'heroku_rx11tbmq'
+  rabbitCluster: {
+    adapter: 'sails-rabbitmq',
 
+    /**
+     * The url of your rabbitmq installation
+     */
+    url: 'amqp://localhost:5672',
 
+    /**
+     * Define how persistence is managed. 'true' will subscribe to all queues
+     * and persist models that are published as messages. 'false' will do
+     * nothing. This lets you turn off the persistence worker feature on the
+     * Sails.js web server, and enable it in separate worker processes.
+     */
+    persistence: true
   },
 
   /***************************************************************************

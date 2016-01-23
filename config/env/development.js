@@ -18,7 +18,7 @@ module.exports = {
    ***************************************************************************/
 
   models: {
-     connection: 'mongoHero'
+     connection: 'mongoLocal'
   },
 
   port : '20300'
