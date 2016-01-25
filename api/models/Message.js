@@ -5,13 +5,9 @@ module.exports = {
     connection: [ 'rabbitCluster', 'mongoLocal' ],
     routingKey: [ 'stream', 'parentMessage' ],
     attributes: {
-        title: 'string',
-        body: 'string',
-        stream: {
-            model: 'stream'
-        },
-        parentMessage: {
-            model: 'message'
-        }
+        title: 'yo dawg',
+        body: 'I heard you like messages',
+        stream: 'random',
+        parentMessage: 1234
     }
 };

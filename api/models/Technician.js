@@ -19,7 +19,7 @@ module.exports = {
         },
 
         email: {
-            //type: 'email',
+            type: 'email',
             required: true,
             unique: true
         },
@@ -38,7 +38,8 @@ module.exports = {
         },
         skill: {
             collection: 'Breakdown',
-            via: 'techies'
+            via: 'techies',
+            dominant : 'true'
         },
         society:{
             type:'string'

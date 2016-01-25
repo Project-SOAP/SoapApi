@@ -11,8 +11,12 @@ module.exports = {
   routingKey: [ 'stream', 'parentMessage' ],
   attributes: {
 
-    latitude :"",
-    longitude : ""
+    latitude :{
+    	type : 'string'
+	},
+    longitude : {
+    	type : 'string'
+	}
   }
 };
 
