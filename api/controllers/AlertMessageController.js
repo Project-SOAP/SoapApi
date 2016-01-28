@@ -9,12 +9,12 @@ module.exports = {
 
     subscribeToAlert : function(req,res){
         if(!req.isSocket)return res.json(401,{err:'is not a socket request'});
-        var userId = req.param('userId');
+
         console.log('je passe ici dans le controleur des locations')
-        AlertMessages.find({alertMessage:userId}).populate('logs').exec(
+        AlertMessages.find().populate('logs').exec(
             function(err,AlertMessages){
                 if(err)return res.error()
-                AlertMessage.subscribe(req, _.pluck(AlertMessages,'id'))
+                AlertMessage.subscribe(req, _.pluck(AlertMessages))
                 return res.json(AlertMessages)
             }
         )

@@ -29,12 +29,12 @@ module.exports = {
 
     subscribeToTechnician : function(req,res){
         if(!req.isSocket)return res.json(401,{err:'is not a socket request'});
-        var userId = req.param('userId');
+
         console.log('je passe ici dans le controleur des locations')
-        Technicians.find({technician:userId}).populate('logs').exec(
+        Technicians.find().populate('logs').exec(
             function(err,Technicians){
                 if(err)return res.error()
-                Technician.subscribe(req, _.pluck(Technicians,'id'))
+                Technician.subscribe(req, _.pluck(Technicians))
                 return res.json(Technicians)
             }
         )
