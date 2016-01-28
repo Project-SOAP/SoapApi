@@ -11,10 +11,6 @@ module.exports = {
         },
         parentMessage: {
             model: 'message'
-        }//,
-        /*title: 'yo dawg',
-        body: 'I heard you like messages',
-        stream: 'random',
-        parentMessage: 1234*/
+        }
     }
 };

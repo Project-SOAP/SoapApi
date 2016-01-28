@@ -6,6 +6,7 @@
  */
 
 module.exports = {
+
     subscribeToDriver : function(req,res){
         if(!req.isSocket)return res.json(401,{err:'is not a socket request'});
         var userId = req.param('userId');
