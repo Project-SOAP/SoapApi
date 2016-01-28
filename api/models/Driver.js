@@ -38,7 +38,12 @@ module.exports = {
             type:'string'
         },
         position: {
-            model: 'Position'
+            Latitude :{
+                type : 'string'
+            },
+            Longitude:{
+                type : 'string'
+            }
         },
 
         truck: {
@@ -76,24 +81,7 @@ module.exports = {
                 cb(err)
             }
         })
-    },
-
-    /*beforeUpdate: function (value, next) {
-        if (value.password.length >= 20){
-            next()
-        } else {
-            console.log('je passe dans le beforeUpdate')
-            bcrypt.genSalt(10, function (err, salt) {
-                if (err) return next(err);
-                bcrypt.hash(value.password, salt, function (err, hash) {
-                    if (err) return next(err);
-                    value.password = hash;
-                    value.refreshToken = JwtHandler.generate({email: value.email});
-                    next();
-                })
-            })
-        }
-    }*/
+    }
 
 };
 
