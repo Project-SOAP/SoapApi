@@ -14,7 +14,8 @@ module.exports = {
         AlertMessage.find({AlertMessage:id}).exec(
             function(err,AlertMessages){
                 if(err)return res.error()
-                AlertMessage.subscribe(req, _.pluck(AlertMessages))
+                AlertMessage.subscribe(req, _.pluck(AlertMessages,id))
+                sails.sockets.broadcast()
                 return res.json(AlertMessages)
             }
         )
