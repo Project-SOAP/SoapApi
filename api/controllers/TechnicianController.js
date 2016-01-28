@@ -30,8 +30,8 @@ module.exports = {
     subscribeToTechnician : function(req,res){
         if(!req.isSocket)return res.json(401,{err:'is not a socket request'});
 
-        console.log('je passe ici dans le controleur des locations')
-        Technician.find().populate('logs').exec(
+        console.log('je passe ici dans le controleur des techniciens')
+        Technician.find().populate('log').exec(
             function(err,Technicians){
                 if(err)return res.error()
                 Technician.subscribe(req, _.pluck(Technicians))
