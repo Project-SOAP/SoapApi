@@ -40,9 +40,9 @@ module.exports.routes = {
   'post /api/login/Driver': 'AuthController.loginD',
   'post /api/login/Technician': 'AuthController.loginT',
   'get /api/refresh': 'AuthController.refresh',
-  'get /api/Driver/sub': 'DriverController.subscribeToDriver',
-  'get /api/Technician/sub': 'TechnicianController.subscribeToTechnician',
-  'get /api/AlertMessage/sub': 'AlertMessageController.subscribeToAlert',
+  'get /Driver/sub': 'DriverController.subscribeToDriver',
+  'get /Technician/sub': 'TechnicianController.subscribeToTechnician',
+  'get /AlertMessage/sub': 'AlertMessageController.subscribeToAlert'
 
 
 
