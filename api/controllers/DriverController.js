@@ -30,7 +30,7 @@ module.exports = {
         if(!req.isSocket)return res.json(401,{err:'is not a socket request'});
 
         console.log('je passe ici dans le contrôleur des drivers')
-        Drivers.find().populate('logs').exec(
+        Driver.find().populate('logs').exec(
             function(err,Drivers){
                 if(err)return res.error()
                 Driver.subscribe(req, _.pluck(Drivers))

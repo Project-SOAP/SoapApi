@@ -31,7 +31,7 @@ module.exports = {
         if(!req.isSocket)return res.json(401,{err:'is not a socket request'});
 
         console.log('je passe ici dans le controleur des locations')
-        Technicians.find().populate('logs').exec(
+        Technician.find().populate('logs').exec(
             function(err,Technicians){
                 if(err)return res.error()
                 Technician.subscribe(req, _.pluck(Technicians))
