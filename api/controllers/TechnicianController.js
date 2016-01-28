@@ -7,6 +7,26 @@
 
 module.exports = {
 
+    // an UPDATE action
+    update: function(req, res, next) {
+        var criteria = {};
+        criteria = _.merge({}, req.params.all(), req.body);
+
+        var id = req.param('id');
+
+        if (!id) {
+            return res.badRequest('No id provided.');
+        }
+
+        Technician.update(id, criteria, function(err, user) {
+
+            if (!user) return res.notFound();
+            if (err) return next(err);
+
+            return res.json(user);
+        });
+    },
+
     subscribeToTechnician : function(req,res){
         if(!req.isSocket)return res.json(401,{err:'is not a socket request'});
         var userId = req.param('userId');
