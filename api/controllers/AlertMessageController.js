@@ -73,7 +73,7 @@ module.exports = {
                 if (err) return next(err);
 
                 var io = sails.io;
-                io.sockets.in('Alert Message').emit('messageName', res);
+                io.sockets.broadcast.to('Alert Message').emit('messageName', user);
                 return res.json(user);
             });
         },
