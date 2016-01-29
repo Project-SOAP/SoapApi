@@ -7,55 +7,39 @@
 
 module.exports = {
 
-    find: function(req, res) {
-        var id = req.param('id');
-        var idShortCut = isShortcut(id);
+    index: function(req,res){
+        var socket = req.socket;
+        var io = sails.io;
 
-        if (idShortCut === true) {
-            return next();
-        }
+        // emit to all sockets (aka publish)
+        // including yourself
+        io.sockets.emit('messageName', {thisIs: 'theMessage'});
 
-        if (id) {
-            console.log(id);
-            AlertMessage.findOne(id, function(err, alertMessage) {
+        // broadcast to a room (aka publish)
+        // excluding yourself, if you're in it
+        socket.broadcast.to('roomName').emit('messageName', {thisIs: 'theMessage'});
+
+        // emit to a room (aka publish)
+        // including yourself
+        io.sockets.in('roomName').emit('messageName', {thisIs: 'theMessage'});
+
+        // Join a room (aka subscribe)
+        // If you're in the room already, no problem, do nothing
+        // If the room doesn't exist yet, it gets created
+        socket.join('roomName');
+
+        // Leave a room (aka unsubscribe)
+        // If you're not in the room, no problem, do nothing
+        // If the room doesn't exist yet, no problem, do nothing
+        socket.leave('roomName');
+
+        // Get all connected sockets in the app
+        sails.io.sockets.clients();
+
+        // Get all conneted sockets in the room, "roomName"
+        sails.io.sockets.clients('roomName');
 
 
-                if (alertMessage === undefined) return res.notFound();
-
-                if (err) return res.json(err);
-                AlertMessage.subscribe(req, _.pluck(AlertMessages,'id'))
-                return res.json(AlertMessages)
-                sails.log(alertMessage)
-                return res.jsonx(alertMessage);
-            });
-        } else {
-            var where = req.param('where');
-
-            if (_.isString(where)) {
-                where = JSON.parse(where);
-            }
-
-            var options = {
-                limit: req.param('limit') || undefined,
-                skip: req.param('skip') || undefined,
-                sort: req.param('sort') || undefined,
-                where: where || undefined
-            };
-
-            AlertMessage.find(options, function(err, alertMessage) {
-
-                if (alertMessage === undefined) return res.notFound();
-                if (err) return next(err);
-
-                return res.json(alertMessage);
-            });
-        }
-
-        function isShortcut(id) {
-            if (id === 'find' || id === 'update' || id === 'create' || id === 'destroy') {
-                return true;
-            }
-        }
     },
     
     subscribeToAlert : function(req,res){
