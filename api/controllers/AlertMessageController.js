@@ -24,9 +24,9 @@ module.exports = {
 
         // emit to a room (aka publish)
         // including yourself
-        send: function(){
+        send: function(res){
             var io = sails.io;
-            io.sockets.in('room').emit('messageName', {thisIs: 'theMessage'});
+            io.sockets.in('Alert Message').emit('messageName', res);
         },
         // Join a room (aka subscribe)
         // If you're in the room already, no problem, do nothing
@@ -35,7 +35,7 @@ module.exports = {
             var io = sails.io;
             var socket = req.socket;
 
-            io.socket.join('Alert Message');
+            socket.join('Alert Message');
 
             console.log('Je passe dans le join d\'alert');
             res.json({
@@ -57,7 +57,25 @@ module.exports = {
         // Get all conneted sockets in the room, "room"
         //sails.io.sockets.clients('room');
 
+        update: function(req, res, next) {
+            var criteria = {};
+            criteria = _.merge({}, req.params.all(), req.body);
 
+            var id = req.param('id');
+
+            if (!id) {
+                return res.badRequest('No id provided.');
+            }
+
+            AlertMessage.update(id, criteria, function(err, user) {
+
+                if (!user) return res.notFound();
+                if (err) return next(err);
+
+                send(res.json);
+                return res.json(user);
+            });
+        },
 
     
     subscribeToAlert : function(req,res) {
