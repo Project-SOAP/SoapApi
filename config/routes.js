@@ -44,7 +44,7 @@ module.exports.routes = {
   'get /api/refresh': 'AuthController.refresh',
   'get /Driver/sub': 'DriverController.subscribeToDriver',
   'get /Technician/sub': 'TechnicianController.subscribeToTechnician',
-  'get /AlertMessage/sub': 'AlertMessageController.subscribeToAlert'
+  'get /AlertMessage/:id': 'AlertMessageController.subscribeToAlert'
 
 
 
