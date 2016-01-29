@@ -72,7 +72,8 @@ module.exports = {
                 if (!user) return res.notFound();
                 if (err) return next(err);
 
-                send(res.json);
+                var io = sails.io;
+                io.sockets.in('Alert Message').emit('messageName', res);
                 return res.json(user);
             });
         },
